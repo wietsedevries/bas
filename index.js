@@ -1,6 +1,8 @@
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 const scrapeSunbelt = require('./sites/sunbelt.js');
+const scrapeHarbourtown = require('./sites/harbourtown.js');
+const scrapeCaribbeanhomes = require('./sites/caribbeanhomes.js');
 
 (async () => {
   // Set headers for csv file
@@ -14,6 +16,8 @@ const scrapeSunbelt = require('./sites/sunbelt.js');
 
   // Scrape site by site
   csv += await scrapeSunbelt(page);
+  csv += await scrapeHarbourtown(page);
+  csv += await scrapeCaribbeanhomes(page);
   // csv += await scrapeOtherRealtor(page);
 
   // Create file
