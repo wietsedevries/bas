@@ -4,7 +4,7 @@
  */
 const convertToTableRow = ({ realtor, address, price, status }) => {
   // clean data to prevent broken file
-  const cleanData = [realtor, address, price, status].map(value => value.replace(',', '-'));
+  const cleanData = [realtor, address, price, status].map(value => value.replaceAll(',', '.'));
   const row = cleanData.join(',') + '\n';
   return row;
 }

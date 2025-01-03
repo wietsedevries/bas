@@ -13,16 +13,14 @@ const scrapeSunbelt = require('./sites/sunbelt.js');
   const page = await browser.newPage();
 
   // Scrape site by site
-  const sunbeltdata = await scrapeSunbelt(page);
-  console.log({sunbeltdata})
-  csv += sunbeltdata;
+  csv += await scrapeSunbelt(page);
   // csv += await scrapeOtherRealtor(page);
 
   // Create file
-
   const filename = `output/market-${new Date().toISOString()}.csv`
   try {
     fs.writeFileSync(filename, csv, 'utf8');
+    console.log(`Done -> ${filename}`)
   } catch (err) {
     console.log({ err })
   }
